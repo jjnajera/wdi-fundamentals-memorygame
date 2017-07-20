@@ -31,16 +31,27 @@ var checkForMatch = function(){
   }
 };
 
-var flipCard = function(cardId){
-  cardsInPlay.push(cards[cardId].rank);
-  console.log("User flipped " + cards[cardId].rank);
-  console.log(cards[cardId].cardImage);
-  console.log(cards[cardId].suit);
+var flipCard = function(){
+  var cardId = this.getAttribute('data-id');
+  this.setAttribute('src',cards[cardId].cardImage);
+
+  cardsInPlay.push(cards[cardId]);
 
   if(cardsInPlay.length === 2){
     checkForMatch();
   }
 };
 
-flipCard(0);
-flipCard(2);
+var createGameBoard = function(){
+  for(var i = 0;i < cards.length; i++){
+    var newImage = document.createElement('img');
+    newImage.setAttribute('src','images/back.png');
+    newImage.setAttribute('data-id',i);
+
+    newImage.addEventListener('click',flipCard);
+
+    document.getElementById('game-board').appendChild(newImage);
+  }
+};
+
+createGameBoard();
