@@ -59,6 +59,32 @@ img {
   margin: 40px 8px 0 8px;
 }
 
+button {
+  background-color: red;
+  color: white;
+  margin: 0 20px;
+  font-size: 14px;
+  letter-spacing: .08em;
+  font-weight: 400;
+  font-family: "Raleway", sans-serif;
+}
+
+span {
+  margin: 0 10px;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "Droid Serif",serif;
+  letter-spacing: .08em;
+}
+
+#matchScore {
+  color: rgb(0, 40, 173);
+}
+
+#nonMatchScore {
+  color: rgb(173, 0, 0);
+}
+
 footer {
   text-transform: uppercase;
   padding: 0 20px;
@@ -83,7 +109,7 @@ footer {
   font-weight: 700;
 }
 
-.help_tabs:hover {
+.nav_tabs:hover {
     border-color: #FFFFFF;
 }
 
