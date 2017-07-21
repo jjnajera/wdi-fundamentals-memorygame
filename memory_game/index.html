@@ -13,7 +13,6 @@
     <nav>
       <a class="nav_tabs" href="#instructions">Instructions</a>
       <a class="nav_tabs" href="#game-board">Game</a>
-      <button disabled=true>Reset Game</button>
     </nav>
     <main class="clearfix">
       <h2 id="instructions">Instructions</h2>
@@ -23,12 +22,18 @@
           the game is to turn over pairs of matching cards.</p>
       <h2>Why Play the game?</h2>
         <p>If you are looking to test your ablility to retain information or you are
-          just trying to beat the boredom, then this is the game for you. If you want to
-          <a href="https://www.facebook.com/juan.najera.923">learn more</a> about the developer.</p>
-      <span id="matchScore">Match Score: 0</span>
-      <span id="nonMatchScore" >Non-match Score: 0</span></p>
+          just trying to beat the boredom, then this is the game for you. With a continuous game play,
+          try to find as many matches as possible to rack up points. Be careful, every missed match
+          loses points. If you want to learn more about the developer, <a href="https://www.facebook.com/juan.najera.923">click here</a>.</p>
       <div id="game-board">
       </div>
+      <aside>
+        <button>New Game</button>
+        <span id="highScore" class="score">Hi-Score: 0</span>
+        <span id="matchFound" class="score">Matches Found: 0</span>
+        <span id="totalScore" class="score">Total Score: 0</span></p>
+        <p id="message" hidden></p>
+      </aside>
     </main>
     <footer class="clearfix">
       <p class="copyright">Copyright 2017</p>

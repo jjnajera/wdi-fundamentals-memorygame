@@ -21,43 +21,58 @@ var cards = [
   }
 ];
 var cardsInPlay = [];
-var resetButton = document.getElementsByTagName('button')[0];
-var matchScore = 0;
-var nonMatchScore = 0;
+var newGameButton = document.getElementsByTagName('button')[0];
+var message = document.getElementById('message');
+var highScore = 0;
+var matchFound = 0;
+var totalScore = 0;
 
 var checkForMatch = function(){
-  if(cardsInPlay[0] === cardsInPlay[1]){
-    matchScore += 2;
-    var temp = document.getElementById('matchScore').textContent = "Match Score: "+matchScore;
-    alert("You found a match!");
+
+  if(cardsInPlay[0].rank === cardsInPlay[1].rank){
+    matchFound += 2;
+    totalScore += 10;
+
+    document.getElementById('matchFound').textContent = "Matches Found: "+matchFound;
+    document.getElementById('totalScore').textContent = "Total Score: "+totalScore;
+
+    message.textContent = "match found";
+    message.style.color = "green";
   }
   else{
-    nonMatchScore += 2;
-    var temp = document.getElementById('nonMatchScore').textContent = "Non-match Score: "+nonMatchScore;
-    alert("Sorry, try again.");
+    totalScore -=5;
+    document.getElementById('totalScore').textContent = "Total Score: "+totalScore;
+
+    message.textContent = "try again";
+    message.style.color = "red";
   }
+
+  if(totalScore > highScore){
+    highScore = totalScore;
+    document.getElementById('highScore').textContent = "Hi-Score: "+highScore;
+  }
+
+  message.removeAttribute('hidden','');
+
+  setTimeout(resetGame, 400);
 };
 
 var flipCard = function(){
-  if(resetButton.getAttribute('disabled')){
-    resetButton.removeAttribute('disabled');
-    resetButton.style.backgroundColor= "#00FF00";
-    resetButton.style.color = "black";
-  }
-
   var cardId = this.getAttribute('data-id');
   this.setAttribute('src',cards[cardId].cardImage);
 
-  cardsInPlay.push(cards[cardId].rank);
+  cardsInPlay.push(cards[cardId]);
 
   if(cardsInPlay.length === 2){
     setTimeout(checkForMatch,100);
   }
+
+  this.removeEventListener('click', flipCard);
 };
 
 var createGameBoard = function(){
 
-  resetButton.addEventListener('click', resetGame);
+  newGameButton.addEventListener('click', newGame);
 
   cards.sort(function(){return 0.5-Math.random()});
 
@@ -72,10 +87,18 @@ var createGameBoard = function(){
   }
 };
 
+var newGame = function(){
+  matchFound = 0;
+  totalScore = 0;
+
+  resetGame();
+
+  document.getElementById("matchFound").innerHTML = "Matches Found: " + matchFound;
+  document.getElementById("totalScore").innerHTML = "Total Score: " + totalScore;
+}
+
 var resetGame = function(){
-  resetButton.setAttribute('disabled',true);
-  resetButton.style.backgroundColor = "red";
-  resetButton.style.color = "white";
+  message.setAttribute('hidden','');
 
   var parent = document.getElementById('game-board');
   var images = document.getElementsByTagName('img');

@@ -40,8 +40,8 @@ p {
   font-weight: 600;
   font-size: 18px;
   text-transform: uppercase;
-  margin: 0 20px;
   text-decoration: none;
+  margin: 0 20px;
   border-bottom: 2px solid transparent;
 }
 
@@ -51,38 +51,57 @@ nav {
 }
 
 main {
-  width: 850px;
-  margin: 35px auto;
+  width: 1000px;
+  margin: 35px auto 50px 100px;
 }
 
 img {
   margin: 40px 8px 0 8px;
+  float: left;
+}
+
+aside {
+  margin: 40px 4px 0 4px;
 }
 
 button {
   background-color: red;
+  display: inline-block;
   color: white;
-  margin: 0 20px;
+  margin: 10px 20px;
   font-size: 14px;
   letter-spacing: .08em;
   font-weight: 400;
   font-family: "Raleway", sans-serif;
 }
 
-span {
-  margin: 0 10px;
+.score {
+  margin: 10px 10px;
+  display: block;
   font-size: 20px;
   font-weight: 600;
   font-family: "Droid Serif",serif;
   letter-spacing: .08em;
 }
 
-#matchScore {
+#highScore {
+  color: rgb(163, 138, 1);
+}
+
+#matchFound {
   color: rgb(0, 40, 173);
 }
 
-#nonMatchScore {
+#totalScore {
   color: rgb(173, 0, 0);
+}
+
+#message {
+  text-transform: uppercase;
+  margin: 10px 0;
+  font-size: 35px;
+  font-family: "Raleway",sans-serif;
+  font-weight: 800;
 }
 
 footer {
@@ -109,7 +128,7 @@ footer {
   font-weight: 700;
 }
 
-.nav_tabs:hover {
+.nav_tab:hover {
     border-color: #FFFFFF;
 }
 
